@@ -97,7 +97,7 @@ argo-cd:
         labels: {}
         pathType: Prefix
         paths:
-        - /api/webhook
+          - /api/webhook
         tls: []
   configs:
     clusterCredentials: []
@@ -148,7 +148,7 @@ argo-cd:
       create: true
       policy.csv: ""
       policy.default: ""
-      scopes: '[groups]'
+      scopes: "[groups]"
     repositories: {}
     repositoriesAnnotations: {}
     secret:
@@ -170,18 +170,18 @@ argo-cd:
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: argocd-application-controller
-            topologyKey: kubernetes.io/hostname
-          weight: 100
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/part-of: argocd
-            topologyKey: kubernetes.io/hostname
-          weight: 5
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: argocd-application-controller
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/part-of: argocd
+              topologyKey: kubernetes.io/hostname
+            weight: 5
     args:
       operationProcessors: "25"
       repoServerTimeoutSeconds: "200"
@@ -197,14 +197,14 @@ argo-cd:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-        - all
+          - all
       readOnlyRootFilesystem: true
       runAsNonRoot: true
     env: []
     envFrom: []
     extraArgs:
-    - --kubectl-parallelism-limit
-    - "35"
+      - --kubectl-parallelism-limit
+      - "35"
     extraContainers: []
     image:
       imagePullPolicy: ""
@@ -416,7 +416,7 @@ argo-cd:
         service:
           annotations: {}
           port: 80
-          type: LoadBalancer
+          type: ClusterIP #LoadBalancer
         serviceAccount:
           annotations: {}
           create: true
@@ -487,18 +487,18 @@ argo-cd:
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: argocd-redis
-            topologyKey: kubernetes.io/hostname
-          weight: 100
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/part-of: argocd
-            topologyKey: kubernetes.io/hostname
-          weight: 5
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: argocd-redis
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/part-of: argocd
+              topologyKey: kubernetes.io/hostname
+            weight: 5
     containerPort: 6379
     containerSecurityContext: {}
     enabled: true
@@ -591,18 +591,18 @@ argo-cd:
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: argocd-repo-server
-            topologyKey: kubernetes.io/hostname
-          weight: 100
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/part-of: argocd
-            topologyKey: kubernetes.io/hostname
-          weight: 5
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: argocd-repo-server
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/part-of: argocd
+              topologyKey: kubernetes.io/hostname
+            weight: 5
     autoscaling:
       behavior: {}
       enabled: false
@@ -620,18 +620,18 @@ argo-cd:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-        - all
+          - all
       readOnlyRootFilesystem: true
       runAsNonRoot: true
     env:
-    - name: ARGOCD_EXEC_TIMEOUT
-      value: 180s
+      - name: ARGOCD_EXEC_TIMEOUT
+        value: 180s
     envFrom: []
     extraArgs:
-    - --repo-cache-expiration
-    - 24h
-    - --parallelismlimit
-    - "50"
+      - --repo-cache-expiration
+      - 24h
+      - --parallelismlimit
+      - "50"
     extraContainers: []
     image:
       imagePullPolicy: ""
@@ -707,23 +707,23 @@ argo-cd:
       spec: {}
     GKEmanagedCertificate:
       domains:
-      - argocd.example.com
+        - argocd.example.com
       enabled: false
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: argocd-server
-            topologyKey: kubernetes.io/hostname
-          weight: 100
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/part-of: argocd
-            topologyKey: kubernetes.io/hostname
-          weight: 5
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: argocd-server
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/part-of: argocd
+              topologyKey: kubernetes.io/hostname
+            weight: 5
     autoscaling:
       behavior: {}
       enabled: false
@@ -755,7 +755,7 @@ argo-cd:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-        - all
+          - all
       readOnlyRootFilesystem: true
       runAsNonRoot: true
     env: []
@@ -784,7 +784,7 @@ argo-cd:
       labels: {}
       pathType: Prefix
       paths:
-      - /
+        - /
       tls: []
     ingressGrpc:
       annotations: {}
@@ -800,7 +800,7 @@ argo-cd:
       labels: {}
       pathType: Prefix
       paths:
-      - /
+        - /
       tls: []
     initContainers: []
     lifecycle: {}
@@ -929,9 +929,9 @@ components:
     imagePullPolicy: IfNotPresent
     ingress:
       annotations: {}
-      className: nginx
+      className: traefik #nginx
       enabled: false
-      host: devtron.example.com
+      host: devtron.pangarabbit.com
       labels: {}
       pathType: ImplementationSpecific
       tls: []
@@ -941,7 +941,7 @@ components:
       labels: {}
       loadBalancerSourceRanges: []
       port: 80
-      type: LoadBalancer
+      type: ClusterIP #LoadBalancer
     serviceMonitor:
       enabled: false
   gitsensor:
@@ -1101,7 +1101,7 @@ installer:
   arch: multi-arch
   image: inception
   modules:
-  - cicd
+    - cicd
   openshift: false
   production_overrides: ""
   registry: ""
